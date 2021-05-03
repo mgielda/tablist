@@ -13,8 +13,8 @@ def list_sections():
     print('Sections:\n%s' % ('\n'.join(list(data.keys()))))
 
 @app.command()
-def show_tabs(section_name: str, pretty: bool = False):
-    "show tabs in section"
+def list_tabs(section_name: str, pretty: bool = False):
+    "list tabs in section"
     tabs = list(data[section_name].values())
     if pretty:
         print(f'Tabs in section {section_name}:')
