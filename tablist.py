@@ -23,6 +23,14 @@ def list_tabs(section_name: str, pretty: bool = False):
         for t in tabs:
             print(t)
 
+@app.command()
+def open_tabs(section_name: str):
+    "open tabs in section in browser"
+    tabs = list(data[section_name].values())
+    import subprocess
+    for t in tabs:
+        process = subprocess.Popen(['xdg-open', t])
+
 @app.callback(hidden=True)
 def main(file: str = "tabs.yml"):
     global data
