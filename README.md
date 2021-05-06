@@ -3,5 +3,5 @@
 Installation:
 
 ```
-pip3 install typer click click-repl
+pip3 install pyyaml typer click click-repl
 ```
