@@ -32,7 +32,7 @@ def open_tabs(section_name: str):
         process = subprocess.Popen(['xdg-open', t])
 
 @app.callback(hidden=True)
-def main(file: str = "tabs.yml"):
+def tablist (file: str = "tabs.yml"):
     global data
     if data is None:
         with open(file, 'r') as f:
