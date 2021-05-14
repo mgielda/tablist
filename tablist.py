@@ -43,6 +43,9 @@ def open_tabs(section_name: str, tab_no: Optional[int] = typer.Argument(None)):
         return
     import subprocess
     if tab_no is not None:
+        if tab_no >= len(tabs):
+            print(f"Tab number {tab_no} not existent in '{section_name}' section")
+            return
         process = subprocess.Popen(['xdg-open', tabs[tab_no]])
     else:
         for t in tabs:
