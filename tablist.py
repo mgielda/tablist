@@ -39,7 +39,7 @@ def open_tabs(section_name: str, tab_no: Optional[int] = typer.Argument(None)):
     try:
         tabs = list(data[section_name].values())
     except KeyError:
-        print("Section 'f{section_name}' not in the YAML file")
+        print(f"Section '{section_name}' not in the YAML file")
         return
     import subprocess
     if tab_no is not None:
