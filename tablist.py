@@ -2,6 +2,8 @@
 
 import typer
 import yaml
+from typing import Optional
+from termcolor import colored
 
 app = typer.Typer(help="A tab list app", add_completion=False)
 
@@ -16,19 +18,23 @@ def list_sections():
 def list_tabs(section_name: str, pretty: bool = False):
     "list tabs in section"
     try:
-        tabs = list(data[section_name].values())
+        tabs = data[section_name]
     except KeyError:
         print(f"Section '{section_name}' not in the YAML file")
         return
     if pretty:
         print(f'Tabs in section {section_name}:')
-        print(yaml.dump(tabs, default_flow_style=False).strip())
+        for index, (key, value) in enumerate(tabs.items()):
+            print(colored(index, attrs=['bold']), colored(key, 'yellow'), value)
     else:
-        for t in tabs:
+        for t in list(tabs.values()):
             print(t)
 
+# TODO allow fuzzy finding of arguments / tab names in CLI mode
+# perhaps in a new CLI library?
+
 @app.command()
-def open_tabs(section_name: str):
+def open_tabs(section_name: str, tab_no: Optional[int] = None):
     "open tabs in section in browser"
     try:
         tabs = list(data[section_name].values())
@@ -36,8 +42,11 @@ def open_tabs(section_name: str):
         print("Section 'f{section_name}' not in the YAML file")
         return
     import subprocess
-    for t in tabs:
-        process = subprocess.Popen(['xdg-open', t])
+    if tab_no is not None:
+        process = subprocess.Popen(['xdg-open', tabs[tab_no]])
+    else:
+        for t in tabs:
+            process = subprocess.Popen(['xdg-open', t])
 
 @app.callback(hidden=True)
 def tablist (file: str = "tabs.yml"):
