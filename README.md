@@ -27,3 +27,6 @@ typer tablist.py utils docs
   * [ ] non-existing command lists sections
   * [ ] make sections into auto-loaded subcommands with optional arg (no arg - lists tabs, number - open specific tab)
 * [ ] add tags (brackets after names)
+* [X] add fuzzy find
+* [X] shorten command names
+* [ ] add remote endpoints with caching/indexing
