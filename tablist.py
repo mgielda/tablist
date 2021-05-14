@@ -9,13 +9,11 @@ app = typer.Typer(help="A tab list app", add_completion=False)
 
 data = None
 
-@app.command()
 @app.command("ls")
 def list_sections():
     "list available sections"
     print('Sections:\n%s' % ('\n'.join(list(data.keys()))))
 
-@app.command()
 @app.command("lt")
 def list_tabs(section_name: str, just_urls: bool = False):
     "list tabs in section"
@@ -37,7 +35,6 @@ def list_tabs(section_name: str, just_urls: bool = False):
 # TODO allow fuzzy finding of arguments / tab names in CLI mode
 # perhaps in a new CLI library?
 
-@app.command()
 @app.command("ot")
 def open_tabs(section_name: str, tab_no: Optional[int] = typer.Argument(None)):
     "open tabs in section in browser"
@@ -85,7 +82,7 @@ def fzf(search_string: str):
 import click
 from click_repl import repl
 
-@app.command()
+@app.command("i")
 def interactive():
     "run in interactive mode"
     click.echo("Running in interactive mode. This supports tab completion.")
