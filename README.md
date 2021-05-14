@@ -19,3 +19,13 @@ Run using:
 ```
 typer tablist.py utils docs
 ```
+
+## TODO
+
+* [ ] create a poetry file for this with a script
+* [ ] simpler usage (to be replicated with aliases for now)
+  * [ ] make it list sections by default (may be difficult - see [issue](https://github.com/tiangolo/typer/issues/18))
+  * [ ] non-existing command lists sections
+  * [ ] make sections into auto-loaded subcommands with optional arg (no arg
+  - lists tabs, number - open specific tab)
+* [ ] add tags (brackets after names)

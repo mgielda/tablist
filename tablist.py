@@ -34,7 +34,7 @@ def list_tabs(section_name: str, pretty: bool = False):
 # perhaps in a new CLI library?
 
 @app.command()
-def open_tabs(section_name: str, tab_no: Optional[int] = None):
+def open_tabs(section_name: str, tab_no: Optional[int] = typer.Argument(None)):
     "open tabs in section in browser"
     try:
         tabs = list(data[section_name].values())
