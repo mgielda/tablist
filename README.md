@@ -29,4 +29,4 @@ typer tablist.py utils docs
 * [ ] add tags (brackets after names)
 * [X] add fuzzy find
 * [X] shorten command names
-* [ ] add remote endpoints with caching/indexing
+* [ ] add remote endpoints (e.g. GH issues) via twill with caching/indexing - and fuzzy search
