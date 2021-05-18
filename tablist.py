@@ -25,8 +25,9 @@ def list_tabs(section_name: str, just_urls: bool = False):
 
     urls = list(tabs.values())
     if not just_urls:
-        print(f'Tabs for "{section_name}":')
-        for index, (key, value) in enumerate(tabs.items()):
+        items = tabs.items()
+        print(f'Tabs for "{section_name}":' if len(items) > 0 else f'No tabs for {section_name}.')
+        for index, (key, value) in enumerate(items):
             print(colored(index, attrs=['bold']), colored(key, 'yellow'), value)
     else:
         for u in urls:
