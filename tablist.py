@@ -55,8 +55,11 @@ def open_tabs(section_name: str, tab_no: Optional[int] = typer.Argument(None)):
         for u in urls:
             process = subprocess.Popen(['xdg-open', u])
 
+from pathlib import Path
+home = str(Path.home())
+
 @app.callback(hidden=True)
-def tablist(file: str = "tabs.yml"):
+def tablist(file: str = home + "/.tablist.yml"):
     global data
     try:
         with open(file, 'r') as f:

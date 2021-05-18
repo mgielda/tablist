@@ -6,6 +6,18 @@
 pip3 install pyyaml typer typer-cli click click-repl
 ```
 
+## Preparation
+
+You will need a YAML config file in `~/.tablist.yml`:
+
+```
+Section name 1:
+  Tab name 1: https://some.url.com
+  Tab name 2: https://another.url.com
+Section name 2:
+  Tab name 3: https://yet.another.url.com
+```
+
 ## Running
 
 Run using:
